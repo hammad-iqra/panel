@@ -1,21 +1,27 @@
 <?php
 include('config.php');
-$id = $_REQUEST['id'];
+
+$id = $_POST['id'];
 $name = $_POST['name'];
 $username = $_POST['username'];
-$password= $_POST['password'];
-$role_id=$_POST['role_id'];
+$password = $_POST['password'];
+$role_id = $_POST['role_id'];
 
 
+$update = "UPDATE user_role SET name='$name', username='$username', password='$password', role_id='$role_id' WHERE id='$id'";
 
-// echo $id;
-$update = "UPDATE role_id SET name = '$name' , username = '$username', password = '$password' role_id = '$role_id' where id = '$id'" ;
-$result3 = mysqli_query($conn,$update);
-if($result3 == true){
-    header('location: dashboard.php');
 
+$result = mysqli_query($conn, $update);
+
+
+if ($result==true) {
+    header('location: fetch.php');
+    exit();
+} else {
+    echo "Error updating data: " . mysqli_error($conn);
 }
-else{
-    print "your data has not been successfully updated";
-}
+
+
+mysqli_close($conn);
 ?>
+
