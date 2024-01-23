@@ -1,9 +1,9 @@
 <?php
 include("config.php");
-// session_start();
-// if(isset($_SESSION["username"])){
-//     header("location:dashboard.php");
-// }
+session_start();
+if(!isset($_SESSION["username"])==1){
+    header("location:login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@ include("config.php");
                             ?>
                             <div class="mb-3">
                                 <label for="id" class="form-label">ID</label>
-                                <input type="number" class="form-control" value="<?php echo $id; ?>" id="student_id" name="student_id" required readonly>
+                                <input type="number" class="form-control" value="<?php echo $id; ?>" id="id" name="id" required readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
